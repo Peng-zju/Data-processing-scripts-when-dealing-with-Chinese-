@@ -11,7 +11,7 @@ import re
 class to_date:
     def Trans_date(date):
         '''
-        二O一四年五月十六日
+        二O一四年五月十六日 转化为 2014/5/16
         '''
         date_dict = {"一": "1", "二": "2", "三": "3", "四": "4", "五": "5",
                      "六": "6", "七": "7", "八": "8", "九": "9", "十": "10",
@@ -26,8 +26,3 @@ class to_date:
         day = (date_dict[pat_day.findall(date)[0][1:-1]])
         return('201'+year+'/'+month+'/'+day)
         
-df_csv = pd.read_csv('hz_yuhangqu.csv')
-for index in df_csv.index:
-    if df_csv.loc[index,'punish_date'][0]=='二':
-        df_csv.loc[index,'punish_date'] = to_date.Trans_date(df_csv.loc[index,'punish_date'])
-df_csv.to_csv('hz_yuhangqu1.csv')
